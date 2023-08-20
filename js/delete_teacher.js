@@ -1,0 +1,34 @@
+function delete_confirm(){
+if ($('.checkbox:checked').length>0) {
+var result= confirm("Are you sure to delete selected users?");
+if (result) {
+return true;
+}else {
+return false;
+}
+}else {
+alert('select at least 1 record to delete.');
+}
+}
+
+$(document).ready(function(){
+   $('#all_select').on('click',function(){
+     if(this.checked){
+       $('.checkbox').each(function(){
+         this.checked=true;
+       });
+     }else {
+       $('.checkbox').each(function(){
+         this.checked=false;
+       });
+     }
+   });
+
+   $('.checkbox').on('click',function(){
+     if ($('.checkbox:checked').length == $('.checkbox').length) {
+       $('#all_select').prop('checked',true);
+     }else{
+       $('#all_select').prop('checked',false);
+     }
+   });
+});
